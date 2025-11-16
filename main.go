@@ -9,6 +9,11 @@ import (
 
 func main() {
 
+	//setup static files
+
+	fs := http.FileServer(http.Dir("static/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	//initialise handlers
 	pageHandler := handlers.PageHandler{}
 
